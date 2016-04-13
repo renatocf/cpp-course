@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 
 int readNumber() {
   int new_number;
@@ -23,19 +24,15 @@ int main() {
   b  = readNumber();
 
   if (op == '+') {
-    std::cout << "The result of " << a << " " << op << " " << b
-              << " is " << a + b << std::endl;
+    std::printf("The result of %d %c %d is %d\n", a, op, b, a + b);
   } else if (op == '-') {
-    std::cout << "The result of " << a << " " << op << " " << b
-              << " is " << a - b << std::endl;
+    std::printf("The result of %d %c %d is %d\n", a, op, b, a - b);
   } else if (op == '*') {
-    std::cout << "The result of " << a << " " << op << " " << b
-              << " is " << a * b << std::endl;
+    std::printf("The result of %d %c %d is %d\n", a, op, b, a * b);
   } else if (op == '/') {
-    std::cout << "The result of " << a << " " << op << " " << b
-              << " is " << a / b << std::endl;
+    std::printf("The result of %d %c %d is %d\n", a, op, b, a / b);
   } else {
-    std::cout << "Error! Operator " << op << " is unknown" << std::endl;
+    std::printf("Error! Operator %c is unknown\n", op);
   }
 
   return 0;
