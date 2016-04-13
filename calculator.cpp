@@ -23,13 +23,17 @@ int main() {
   b  = readNumber();
 
   if (op == '+') {
-    std::cout << "The result of `a + b` is: " << a + b << std::endl;
+    std::cout << "The result of " << a << " " << op << " " << b
+              << " is " << a + b << std::endl;
   } else if (op == '-') {
-    std::cout << "The result of `a - b` is: " << a - b << std::endl;
+    std::cout << "The result of " << a << " " << op << " " << b
+              << " is " << a - b << std::endl;
   } else if (op == '*') {
-    std::cout << "The result of `a * b` is: " << a * b << std::endl;
+    std::cout << "The result of " << a << " " << op << " " << b
+              << " is " << a * b << std::endl;
   } else if (op == '/') {
-    std::cout << "The result of `a / b` is: " << a / b << std::endl;
+    std::cout << "The result of " << a << " " << op << " " << b
+              << " is " << a / b << std::endl;
   } else {
     std::cout << "Error! Operator " << op << " is unknown" << std::endl;
   }
