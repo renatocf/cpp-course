@@ -8,6 +8,19 @@ T read() {
   return variable_read;
 }
 
+int calculate(char op, int lhs, int rhs) {
+  int result = 0;
+  switch (op) {
+    case '+': result = lhs + rhs; break;
+    case '-': result = lhs - rhs; break;
+    case '*': result = lhs * rhs; break;
+    case '/': result = lhs / rhs; break;
+    default:
+      std::printf("Error! Operator %c is unknown\n", op);
+  }
+  return result;
+}
+
 int main() {
   std::cout << "> ";
 
@@ -15,17 +28,7 @@ int main() {
   auto op = read<char>();
   auto b  = read<int>();
 
-  if (op == '+') {
-    std::printf("The result of %d %c %d is %d\n", a, op, b, a + b);
-  } else if (op == '-') {
-    std::printf("The result of %d %c %d is %d\n", a, op, b, a - b);
-  } else if (op == '*') {
-    std::printf("The result of %d %c %d is %d\n", a, op, b, a * b);
-  } else if (op == '/') {
-    std::printf("The result of %d %c %d is %d\n", a, op, b, a / b);
-  } else {
-    std::printf("Error! Operator %c is unknown\n", op);
-  }
+  std::printf("The result of %d %c %d is %d\n", a, op, b, calculate(op, a, b));
 
   return 0;
 }
