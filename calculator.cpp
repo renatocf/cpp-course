@@ -9,16 +9,15 @@ T read() {
 }
 
 int calculate(char op, int lhs, int rhs) {
-  int result = 0;
   switch (op) {
-    case '+': result = lhs + rhs; break;
-    case '-': result = lhs - rhs; break;
-    case '*': result = lhs * rhs; break;
-    case '/': result = lhs / rhs; break;
+    case '+': return lhs + rhs;
+    case '-': return lhs - rhs;
+    case '*': return lhs * rhs;
+    case '/': return lhs / rhs;
     default:
       std::printf("Error! Operator %c is unknown\n", op);
+      return 0;
   }
-  return result;
 }
 
 int main() {
