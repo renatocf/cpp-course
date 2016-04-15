@@ -14,14 +14,11 @@ char readCharacter() {
 }
 
 int main() {
-  int a, b;
-  char op;
-
   std::cout << "> ";
 
-  a  = readNumber();
-  op = readCharacter();
-  b  = readNumber();
+  int  a  = readNumber();
+  char op = readCharacter();
+  int  b  = readNumber();
 
   if (op == '+') {
     std::printf("The result of %d %c %d is %d\n", a, op, b, a + b);
