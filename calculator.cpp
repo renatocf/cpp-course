@@ -1,24 +1,19 @@
 #include <iostream>
 #include <cstdio>
 
-int readNumber() {
-  int new_number;
-  std::cin >> new_number;
-  return new_number;
-}
-
-char readCharacter() {
-  char new_character;
-  std::cin >> new_character;
-  return new_character;
+template<typename T>
+T read() {
+  T variable_read;
+  std::cin >> variable_read;
+  return variable_read;
 }
 
 int main() {
   std::cout << "> ";
 
-  int  a  = readNumber();
-  char op = readCharacter();
-  int  b  = readNumber();
+  int  a  = read<int>();
+  char op = read<char>();
+  int  b  = read<int>();
 
   if (op == '+') {
     std::printf("The result of %d %c %d is %d\n", a, op, b, a + b);
