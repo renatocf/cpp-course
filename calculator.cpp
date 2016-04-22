@@ -11,9 +11,9 @@ T read() {
 int main() {
   std::cout << "> ";
 
-  int  a  = read<int>();
-  char op = read<char>();
-  int  b  = read<int>();
+  auto a  = read<int>();
+  auto op = read<char>();
+  auto b  = read<int>();
 
   if (op == '+') {
     std::printf("The result of %d %c %d is %d\n", a, op, b, a + b);
