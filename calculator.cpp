@@ -17,12 +17,7 @@ T read() {
 }
 
 struct Expression readExpression() {
-  struct Expression exp {
-    read<int>(),
-    read<char>(),
-    read<int>()
-  };
-  return exp;
+  return { read<int>(), read<char>(), read<int>() };
 }
 
 int evaluateExpression(struct Expression exp) {
