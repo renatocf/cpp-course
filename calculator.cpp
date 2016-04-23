@@ -9,11 +9,8 @@ T read() {
   return variable_read;
 }
 
-struct Expression {
-  int lhs;
-  char op;
-  int rhs;
-
+class Expression {
+ public:
   void read() {
     lhs = ::read<int>();
     op  = ::read<char>();
@@ -47,6 +44,11 @@ struct Expression {
         throw std::invalid_argument(error_message.str());
     }
   }
+
+ private:
+  int lhs;
+  char op;
+  int rhs;
 };
 
 int main() {
