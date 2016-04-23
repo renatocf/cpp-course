@@ -51,11 +51,17 @@ class Expression {
   int rhs;
 
   friend std::istream& operator>>(std::istream& is, Expression& exp);
+  friend std::ostream& operator<<(std::ostream& os, const Expression& exp);
 };
 
 std::istream& operator>>(std::istream& is, Expression& exp) {
   is >> exp.lhs >> exp.op >> exp.rhs;
   return is;
+}
+
+std::ostream& operator<<(std::ostream& os, const Expression& exp) {
+  os << exp.lhs << " " << exp.op << " " << exp.rhs;
+  return os;
 }
 
 int main() {
@@ -65,7 +71,7 @@ int main() {
     auto exp = read<Expression>();
     exp.reverse();
 
-    std::cout << "The result of " << exp.toString()
+    std::cout << "The result of " << exp
               << " reversed is " << exp.evaluate() << std::endl;
   }
 
