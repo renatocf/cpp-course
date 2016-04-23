@@ -15,17 +15,17 @@ T read() {
   return variable_read;
 }
 
-struct Expression readExpression() {
+Expression readExpression() {
   return { read<int>(), read<char>(), read<int>() };
 }
 
-std::string printExpression(struct Expression exp) {
+std::string printExpression(Expression exp) {
   std::ostringstream formatted_expression;
   formatted_expression << exp.lhs << " " << exp.op << " " << exp.rhs;
   return formatted_expression.str();
 }
 
-int evaluateExpression(struct Expression exp) {
+int evaluateExpression(Expression exp) {
   switch (exp.op) {
     case '+': return exp.lhs + exp.rhs;
     case '-': return exp.lhs - exp.rhs;
