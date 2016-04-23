@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdio>
 #include <stdexcept>
 #include <sstream>
 
@@ -18,6 +17,12 @@ T read() {
 
 struct Expression readExpression() {
   return { read<int>(), read<char>(), read<int>() };
+}
+
+std::string printExpression(struct Expression exp) {
+  std::ostringstream formatted_expression;
+  formatted_expression << exp.lhs << " " << exp.op << " " << exp.rhs;
+  return formatted_expression.str();
 }
 
 int evaluateExpression(struct Expression exp) {
@@ -39,8 +44,8 @@ int main() {
 
     auto exp = readExpression();
 
-    std::printf("The result of %d %c %d is %d\n",
-        exp.lhs, exp.op, exp.rhs, evaluateExpression(exp));
+    std::cout << "The result of " << printExpression(exp)
+              << " is " << evaluateExpression(exp) << std::endl;
   }
 
   return 0;
