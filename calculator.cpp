@@ -24,13 +24,15 @@ int calculate(char op, int lhs, int rhs) {
 }
 
 int main() {
-  std::cout << "> ";
+  while (true) {
+    std::cout << "> ";
 
-  auto a  = read<int>();
-  auto op = read<char>();
-  auto b  = read<int>();
+    auto a  = read<int>();
+    auto op = read<char>();
+    auto b  = read<int>();
 
-  std::printf("The result of %d %c %d is %d\n", a, op, b, calculate(op, a, b));
+    std::printf("The result of %d %c %d is %d\n", a, op, b, calculate(op, a, b));
+  }
 
   return 0;
 }
