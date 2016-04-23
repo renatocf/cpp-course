@@ -3,6 +3,12 @@
 #include <stdexcept>
 #include <sstream>
 
+struct Expression {
+  int lhs;
+  char op;
+  int rhs;
+};
+
 template<typename T>
 T read() {
   T variable_read;
@@ -27,11 +33,13 @@ int main() {
   while (true) {
     std::cout << "> ";
 
-    auto a  = read<int>();
-    auto op = read<char>();
-    auto b  = read<int>();
+    struct Expression exp;
+    exp.lhs = read<int>();
+    exp.op  = read<char>();
+    exp.rhs = read<int>();
 
-    std::printf("The result of %d %c %d is %d\n", a, op, b, calculate(op, a, b));
+    std::printf("The result of %d %c %d is %d\n",
+        exp.lhs, exp.op, exp.rhs, calculate(exp.op, exp.lhs, exp.rhs));
   }
 
   return 0;
