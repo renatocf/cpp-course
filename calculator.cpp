@@ -16,15 +16,15 @@ T read() {
   return variable_read;
 }
 
-int calculate(char op, int lhs, int rhs) {
-  switch (op) {
-    case '+': return lhs + rhs;
-    case '-': return lhs - rhs;
-    case '*': return lhs * rhs;
-    case '/': return lhs / rhs;
+int evaluateExpression(struct Expression exp) {
+  switch (exp.op) {
+    case '+': return exp.lhs + exp.rhs;
+    case '-': return exp.lhs - exp.rhs;
+    case '*': return exp.lhs * exp.rhs;
+    case '/': return exp.lhs / exp.rhs;
     default:
       std::ostringstream error_message;
-      error_message << "Operator " << op << " is unknown";
+      error_message << "Operator " << exp.op << " is unknown";
       throw std::invalid_argument(error_message.str());
   }
 }
@@ -39,7 +39,7 @@ int main() {
     exp.rhs = read<int>();
 
     std::printf("The result of %d %c %d is %d\n",
-        exp.lhs, exp.op, exp.rhs, calculate(exp.op, exp.lhs, exp.rhs));
+        exp.lhs, exp.op, exp.rhs, evaluateExpression(exp));
   }
 
   return 0;
