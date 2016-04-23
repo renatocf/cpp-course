@@ -49,14 +49,20 @@ class Expression {
   int lhs;
   char op;
   int rhs;
+
+  friend std::istream& operator>>(std::istream& is, Expression& exp);
 };
+
+std::istream& operator>>(std::istream& is, Expression& exp) {
+  is >> exp.lhs >> exp.op >> exp.rhs;
+  return is;
+}
 
 int main() {
   while (true) {
     std::cout << "> ";
 
-    Expression exp;
-    exp.read();
+    auto exp = read<Expression>();
     exp.reverse();
 
     std::cout << "The result of " << exp.toString()
