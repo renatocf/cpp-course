@@ -11,6 +11,15 @@ T read() {
 
 class Expression {
  public:
+  Expression() {
+  }
+
+  Expression(int lhs, char op, int rhs) {
+    this->lhs = lhs;
+    this->op  = op;
+    this->rhs = rhs;
+  }
+
   int evaluate() const {
     switch (op) {
       case '+': return lhs + rhs;
