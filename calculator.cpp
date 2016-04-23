@@ -2,12 +2,6 @@
 #include <stdexcept>
 #include <sstream>
 
-struct Expression {
-  int lhs;
-  char op;
-  int rhs;
-};
-
 template<typename T>
 T read() {
   T variable_read;
@@ -15,47 +9,56 @@ T read() {
   return variable_read;
 }
 
-Expression readExpression() {
-  return { read<int>(), read<char>(), read<int>() };
-}
+struct Expression {
+  int lhs;
+  char op;
+  int rhs;
 
-void reverseExpression(Expression& exp) {
-  switch (exp.op) {
-    case '+': exp.op = '-'; break;
-    case '-': exp.op = '+'; break;
-    case '*': exp.op = '/'; break;
-    case '/': exp.op = '*'; break;
+  void read() {
+    lhs = ::read<int>();
+    op  = ::read<char>();
+    rhs = ::read<int>();
   }
-}
 
-std::string printExpression(const Expression& exp) {
-  std::ostringstream formatted_expression;
-  formatted_expression << exp.lhs << " " << exp.op << " " << exp.rhs;
-  return formatted_expression.str();
-}
-
-int evaluateExpression(const Expression& exp) {
-  switch (exp.op) {
-    case '+': return exp.lhs + exp.rhs;
-    case '-': return exp.lhs - exp.rhs;
-    case '*': return exp.lhs * exp.rhs;
-    case '/': return exp.lhs / exp.rhs;
-    default:
-      std::ostringstream error_message;
-      error_message << "Operator " << exp.op << " is unknown";
-      throw std::invalid_argument(error_message.str());
+  void reverse() {
+    switch (op) {
+      case '+': op = '-'; break;
+      case '-': op = '+'; break;
+      case '*': op = '/'; break;
+      case '/': op = '*'; break;
+    }
   }
-}
+
+  std::string toString() const {
+    std::ostringstream formatted_expression;
+    formatted_expression << lhs << " " << op << " " << rhs;
+    return formatted_expression.str();
+  }
+
+  int evaluate() const {
+    switch (op) {
+      case '+': return lhs + rhs;
+      case '-': return lhs - rhs;
+      case '*': return lhs * rhs;
+      case '/': return lhs / rhs;
+      default:
+        std::ostringstream error_message;
+        error_message << "Operator " << op << " is unknown";
+        throw std::invalid_argument(error_message.str());
+    }
+  }
+};
 
 int main() {
   while (true) {
     std::cout << "> ";
 
-    auto exp = readExpression();
-    reverseExpression(exp);
+    Expression exp;
+    exp.read();
+    exp.reverse();
 
-    std::cout << "The result of " << printExpression(exp)
-              << " reversed is " << evaluateExpression(exp) << std::endl;
+    std::cout << "The result of " << exp.toString()
+              << " reversed is " << exp.evaluate() << std::endl;
   }
 
   return 0;
