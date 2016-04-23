@@ -16,6 +16,14 @@ T read() {
   return variable_read;
 }
 
+struct Expression readExpression() {
+  struct Expression exp;
+  exp.lhs = read<int>();
+  exp.op  = read<char>();
+  exp.rhs = read<int>();
+  return exp;
+}
+
 int evaluateExpression(struct Expression exp) {
   switch (exp.op) {
     case '+': return exp.lhs + exp.rhs;
@@ -33,10 +41,7 @@ int main() {
   while (true) {
     std::cout << "> ";
 
-    struct Expression exp;
-    exp.lhs = read<int>();
-    exp.op  = read<char>();
-    exp.rhs = read<int>();
+    auto exp = readExpression();
 
     std::printf("The result of %d %c %d is %d\n",
         exp.lhs, exp.op, exp.rhs, evaluateExpression(exp));
