@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <stdexcept>
+#include <string>
 
 template<typename T>
 T read() {
@@ -16,7 +17,8 @@ int calculate(char op, int lhs, int rhs) {
     case '*': return lhs * rhs;
     case '/': return lhs / rhs;
     default:
-      throw std::invalid_argument("Operator is unknown");
+      std::string error_message("Operator is unknown");
+      throw std::invalid_argument(error_message);
   }
 }
 
