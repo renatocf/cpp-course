@@ -11,27 +11,6 @@ T read() {
 
 class Expression {
  public:
-  void read() {
-    lhs = ::read<int>();
-    op  = ::read<char>();
-    rhs = ::read<int>();
-  }
-
-  void reverse() {
-    switch (op) {
-      case '+': op = '-'; break;
-      case '-': op = '+'; break;
-      case '*': op = '/'; break;
-      case '/': op = '*'; break;
-    }
-  }
-
-  std::string toString() const {
-    std::ostringstream formatted_expression;
-    formatted_expression << lhs << " " << op << " " << rhs;
-    return formatted_expression.str();
-  }
-
   int evaluate() const {
     switch (op) {
       case '+': return lhs + rhs;
@@ -69,10 +48,9 @@ int main() {
     std::cout << "> ";
 
     auto exp = read<Expression>();
-    exp.reverse();
 
-    std::cout << "The result of " << exp
-              << " reversed is " << exp.evaluate() << std::endl;
+    std::cout << "The result of " << exp << " is " << exp.evaluate()
+              << std::endl;
   }
 
   return 0;
