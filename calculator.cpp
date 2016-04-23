@@ -19,6 +19,15 @@ Expression readExpression() {
   return { read<int>(), read<char>(), read<int>() };
 }
 
+void reverseExpression(Expression exp) {
+  switch (exp.op) {
+    case '+': exp.op = '-'; break;
+    case '-': exp.op = '+'; break;
+    case '*': exp.op = '/'; break;
+    case '/': exp.op = '*'; break;
+  }
+}
+
 std::string printExpression(Expression exp) {
   std::ostringstream formatted_expression;
   formatted_expression << exp.lhs << " " << exp.op << " " << exp.rhs;
@@ -43,9 +52,10 @@ int main() {
     std::cout << "> ";
 
     auto exp = readExpression();
+    reverseExpression(exp);
 
     std::cout << "The result of " << printExpression(exp)
-              << " is " << evaluateExpression(exp) << std::endl;
+              << " reversed is " << evaluateExpression(exp) << std::endl;
   }
 
   return 0;
