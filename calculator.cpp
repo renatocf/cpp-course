@@ -17,10 +17,11 @@ T read() {
 }
 
 struct Expression readExpression() {
-  struct Expression exp;
-  exp.lhs = read<int>();
-  exp.op  = read<char>();
-  exp.rhs = read<int>();
+  struct Expression exp {
+    read<int>(),
+    read<char>(),
+    read<int>()
+  };
   return exp;
 }
 
