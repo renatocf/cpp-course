@@ -11,8 +11,7 @@ T read() {
 
 class Expression {
  public:
-  Expression() {
-  }
+  Expression() = default;
 
   Expression(int lhs, char op, int rhs)
       : lhs(lhs), op(op), rhs(rhs) {
