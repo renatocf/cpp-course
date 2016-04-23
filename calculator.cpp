@@ -1,11 +1,12 @@
 #include <iostream>
 #include <stdexcept>
 #include <sstream>
+#include <string>
 
 template<typename T>
-T read() {
+T read(std::istream& is) {
   T variable_read;
-  std::cin >> variable_read;
+  is >> variable_read;
   return variable_read;
 }
 
@@ -50,10 +51,11 @@ std::ostream& operator<<(std::ostream& os, const Expression& exp) {
 }
 
 int main() {
-  while (true) {
-    std::cout << "> ";
+  std::string line;
+  while (std::cout << "> ", std::getline(std::cin, line)) {
+    std::istringstream iss(line);
 
-    auto exp = read<Expression>();
+    auto exp = read<Expression>(iss);
 
     std::cout << "The result of " << exp << " is " << exp.evaluate()
               << std::endl;
