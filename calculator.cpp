@@ -50,15 +50,20 @@ std::ostream& operator<<(std::ostream& os, const Expression& exp) {
   return os;
 }
 
+void readEvalPrint(std::string& line) {
+  std::istringstream iss(line);
+
+  auto exp = read<Expression>(iss);
+
+  auto result = exp.evaluate();
+
+  std::cout << result << std::endl;
+}
+
 int main() {
   std::string line;
   while (std::cout << "> ", std::getline(std::cin, line)) {
-    std::istringstream iss(line);
-
-    auto exp = read<Expression>(iss);
-
-    std::cout << "The result of " << exp << " is " << exp.evaluate()
-              << std::endl;
+    readEvalPrint(line);
   }
 
   return 0;
