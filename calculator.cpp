@@ -14,10 +14,8 @@ class Expression {
   Expression() {
   }
 
-  Expression(int lhs, char op, int rhs) {
-    this->lhs = lhs;
-    this->op  = op;
-    this->rhs = rhs;
+  Expression(int lhs, char op, int rhs)
+      : lhs(lhs), op(op), rhs(rhs) {
   }
 
   int evaluate() const {
