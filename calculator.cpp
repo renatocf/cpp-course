@@ -51,13 +51,14 @@ std::ostream& operator<<(std::ostream& os, const Expression& exp) {
 }
 
 void readEvalPrint(std::string& line) {
-  std::istringstream iss(line);
-
-  auto exp = read<Expression>(iss);
-
-  auto result = exp.evaluate();
-
-  std::cout << result << std::endl;
+  try {
+    std::istringstream iss(line);
+    auto exp = read<Expression>(iss);
+    auto result = exp.evaluate();
+    std::cout << result << std::endl;
+  } catch (std::exception& e) {
+    std::cerr << e.what() << std::endl;
+  }
 }
 
 int main() {
